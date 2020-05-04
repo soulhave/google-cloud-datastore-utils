@@ -60,7 +60,7 @@ def save(entities, kind, data_dir):
                  encoding='utf-8') as export_file:
         export_file.write(
             json.dumps(entities, ensure_ascii=False, sort_keys=True, indent=2,
-                       separators=(u',', u': ')))
+                       separators=(',', ': ')))
 
 
 def load(kind, data_dir):
@@ -117,7 +117,7 @@ def split_lists(iterable, chunk_size):
         chunk = []
         try:
             for _ in range(chunk_size):
-                chunk.append(iterable.next())
+                chunk.append(next(iterable))
             yield chunk
         except StopIteration:
             if chunk:
